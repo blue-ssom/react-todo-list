@@ -2,9 +2,7 @@ import React from 'react'
 
 const TodoWrapper = () => {
   return (
-    <div>
-      
-    </div>
+    <div>TodoWrapper</div>
   )
 }
 
