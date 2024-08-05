@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { TodoForm } from './TodoForm';
+import  TodoForm  from './TodoForm';
 import { v4 as uuidv4 } from "uuid";  // 유일한 ID 생성을 위한 uuid 라이브러리 사용
+import  Todo from './Todo';
 
 // TodoWrapper 컴포넌트 선언
 const TodoWrapper = () => {
@@ -19,7 +20,12 @@ const TodoWrapper = () => {
   return (
     <div className='TodoWrapper'>
       {/* TodoForm 컴포넌트를 렌더링하고 addTodo 함수를 props로 전달 */}
+      <h1>Get Things Done!</h1>
       <TodoForm addTodo={addTodo} />
+      {/* todos 상태 배열을 map 함수로 순회하여 각 todo를 렌더링 */}
+      {todos.map((todo, index) => (
+        <Todo task={todo} key={index} />
+      ))}
     </div>
   );
 }
