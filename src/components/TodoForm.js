@@ -14,17 +14,17 @@ export const TodoForm = ({addTodo}) => {
     // console.log(value);
 
     // addTodo 함수를 호출하여 부모 컴포넌트(TodoWrapper)로 값 전달
-    addTodo(value)
+    addTodo(value);
+
+    // 입력 필드가 제출 후에 빈 문자열로 초기화
+    setValue("")
   };
 
   // TodoForm 컴포넌트의 렌더링 부분
   return (
     <form className='TodoForm' onSubmit={handleSubmit}>
       {/* 텍스트 입력 필드. 값이 변경될 때마다 setValue 함수 호출 */}
-      <input
-        type="text"
-        className='todo-input'
-        placeholder='What is the task today?'
+      <input type="text" className='todo-input' value={value} placeholder='What is the task today?'
         onChange={(e) => setValue(e.target.value)}
       />
       {/* 제출 버튼 */}
