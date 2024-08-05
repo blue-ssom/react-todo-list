@@ -3,21 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-export const Todo = ({ task, toggleComplete, deleteTodo }) => {
+export const Todo = ({ task, toggleComplete, deleteTodo, editTodo }) => {
   return (
     <div className='Todo'>
       <p
         onClick={() => toggleComplete(task.id)}
         className={`task ${task.completed ? 'completed' : ''}`}
-        style={{ cursor: 'pointer' }}  // 커서 스타일을 포인터로 설정
       >
         {task.task}
       </p>
       <div>
-        {/* 편집 아이콘 */}
-        <FontAwesomeIcon icon={faPenToSquare} />
-        {/* 삭제 아이콘 */}
-        <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(task.id)} />
+        <FontAwesomeIcon className="edit-icon" icon={faPenToSquare} onClick={() => editTodo(task.id)} />
+        <FontAwesomeIcon className="delete-icon" icon={faTrash} onClick={() => deleteTodo(task.id)} />
       </div>
     </div>
   );
