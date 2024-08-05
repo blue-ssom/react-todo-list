@@ -18,6 +18,10 @@ export const TodoWrapper = () => {
     ));
   };
 
+  const deleteTodo = id => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
   // TodoWrapper 컴포넌트의 렌더링 부분
   return (
     <div className='TodoWrapper'>
@@ -26,7 +30,7 @@ export const TodoWrapper = () => {
       <TodoForm addTodo={addTodo} />
       {/* todos 상태 배열을 map 함수로 순회하여 각 todo를 렌더링 */}
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete}/>
+        <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo}/>
       ))}
     </div>
   );

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-export const Todo = ({ task, toggleComplete }) => {
+export const Todo = ({ task, toggleComplete, deleteTodo }) => {
   return (
     <div className='Todo'>
       <p
@@ -17,7 +17,7 @@ export const Todo = ({ task, toggleComplete }) => {
         {/* 편집 아이콘 */}
         <FontAwesomeIcon icon={faPenToSquare} />
         {/* 삭제 아이콘 */}
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(task.id)} />
       </div>
     </div>
   );
