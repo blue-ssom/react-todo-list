@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import  TodoForm  from './TodoForm';
+import { TodoForm }  from './TodoForm';
 import { v4 as uuidv4 } from "uuid";  // 유일한 ID 생성을 위한 uuid 라이브러리 사용
-import  Todo from './Todo';
+import  { Todo } from './Todo';
 
 // TodoWrapper 컴포넌트 선언
-const TodoWrapper = () => {
-  // useState 훅을 사용하여 todos 상태를 관리. 초기값은 빈 배열
+export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
-  // 새로운 todo를 추가하는 함수
   const addTodo = todo => {
-    // 새로운 todo 객체를 만들고 기존의 todos 배열에 추가
     setTodos([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }]);
-    // 현재 todos 배열을 콘솔에 출력
     console.log(todos);
+  };
+
+  const toggleComplete = id => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
   };
 
   // TodoWrapper 컴포넌트의 렌더링 부분
@@ -24,7 +26,7 @@ const TodoWrapper = () => {
       <TodoForm addTodo={addTodo} />
       {/* todos 상태 배열을 map 함수로 순회하여 각 todo를 렌더링 */}
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} />
+        <Todo task={todo} key={index} toggleComplete={toggleComplete}/>
       ))}
     </div>
   );

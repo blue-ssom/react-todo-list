@@ -89,4 +89,8 @@ h1 {
 .delete-icon {
   cursor: pointer;
 }
+
+.Todo p {
+  cursor: pointer;
+}
  
